@@ -1,0 +1,107 @@
+[project]
+name = "tdd-by-example"
+version = "0.1.0"
+description = "TDD by Example book code examples translated to Python"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    { name = "Matt Lebrun", email = "matt@lebrun.org" }
+]
+dependencies = [
+    "pydantic",
+    "pydantic-settings",
+]
+
+[project.optional-dependencies]
+
+[dependency-groups]
+dev = [
+    { include-group = "test" },
+]
+
+test = [
+    "pytest",
+    "coverage",
+    "pytest-xdist",
+    "pytest-cov",
+    "pytest-pretty",
+    "ruff",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.uv]
+package = true
+default-groups = ["dev"]
+
+
+[build-system]
+requires = ["uv_build>=0.8.7,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = "src"
+module-name = "tdd_by_example"
+
+
+[tool.ruff]
+line-length = 80
+target-version = "py312"
+
+[tool.ruff.format]
+indent-style = "space"
+line-ending = "lf"
+quote-style = "double"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint]
+select = ["E", "F", "N", "W", "C90"]
+ignore = []
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-wrap-aliases = true
+known-first-party = ["raggd"]
+detect-same-package = true
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
+order-by-type = true
+
+[tool.ruff.lint.pycodestyle]
+ignore-overlong-task-comments = true
+max-doc-length = 120
+max-line-length = 80
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.flake8-type-checking]
+quote-annotations = false
+runtime-evaluated-base-classes = [
+    "BaseModel",
+]
+runtime-evaluated-decorators = [
+    "dataclasses.dataclass",
+    "pydantic.validate_call",
+]
+exempt-modules = [
+    "typing",
+    "typing_extensions",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q -n auto --cov=tdd_by_example --cov-report=term-missing --cov-report=xml --maxfail=1"
+testpaths = ["tests"]
