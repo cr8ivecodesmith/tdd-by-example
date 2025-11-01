@@ -1,6 +1,12 @@
 set unstable
 set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
 
+HERE := justfile_directory()
+PROJECT_ROOT := HERE
+
+# Environment variables
+export UV_CACHE_DIR := PROJECT_ROOT + "/.uv_cache"
+
 
 [doc(
 "Run tests using pytest.
