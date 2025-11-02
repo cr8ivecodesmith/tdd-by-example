@@ -11,3 +11,10 @@ def test_multiplication() -> None:
 def test_equality() -> None:
     assert Dollar(5).equals(Dollar(5))
     assert not Dollar(5).equals(Dollar(6))
+
+
+def test_franc_multiplication() -> None:
+    five = Franc(5)
+
+    assert five.times(2) == Dollar(10)
+    assert five.times(3) == Dollar(15)
