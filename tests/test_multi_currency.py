@@ -1,6 +1,13 @@
 import pytest
 
 
+class Dollar:
+
+    def __init__(self, amount: int):
+        pass
+
+
+
 def test_multiplication() -> None:
     five = Dollar(5)
     five.times(2)
