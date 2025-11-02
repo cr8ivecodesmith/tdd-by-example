@@ -51,6 +51,7 @@ $5 * 2 = $10
 - [ ] `$5 + 10 CHF = $10 if CHF to USD is 2:1`
 - [x] `$5 * 2 = $10`
 - [ ] Make `amount` private
-- [x] Dollar side effects?
+- [x] Dollar side effects? - Turn Dollar into a *Value Object*
 - [ ] Money rounding?
-
+- [ ] `.equals()` - Checks object equality
+- [ ] `.hash_code()`

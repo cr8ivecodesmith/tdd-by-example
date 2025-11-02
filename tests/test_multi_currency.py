@@ -9,3 +9,7 @@ def test_multiplication() -> None:
 
     product = five.times(3)
     assert product.amount == 15
+
+
+def test_equality() -> None:
+    assert Dollar(5).equals(Dollar(5))
