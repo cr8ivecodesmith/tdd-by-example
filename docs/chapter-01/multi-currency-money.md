@@ -49,7 +49,7 @@ $5 * 2 = $10
 ## To-Do
 
 - [ ] `$5 + 10 CHF = $10 if CHF to USD is 2:1`
-- [ ] `$5 * 2 = $10`
+- [x] `$5 * 2 = $10`
 - [ ] Make `amount` private
 - [ ] Dollar side effects?
 - [ ] Money rounding?
