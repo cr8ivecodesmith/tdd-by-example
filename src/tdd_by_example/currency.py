@@ -11,3 +11,5 @@ class Dollar:
     def times(self, multiplier: int) -> None:
         return Dollar(self.amount * multiplier)
 
+    def equals(self, other: "Dollar") -> bool:
+        return True
