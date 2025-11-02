@@ -55,3 +55,6 @@ $5 * 2 = $10
 - [ ] Money rounding?
 - [x] `.equals()` - Checks object amount equality
 - [ ] `.hash_code()`
+- [ ] Equal null
+- [ ] Equal object
+
