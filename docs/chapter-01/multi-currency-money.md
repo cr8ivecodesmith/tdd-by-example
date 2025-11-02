@@ -48,7 +48,9 @@ $5 * 2 = $10
 
 ## To-Do
 
-- [ ] Multiply a given amount by a number representing shares.
-- [ ] Add two amounts in the same currency.
-- [ ] Add two amounts in different currencies given an exchange rate.
+- [ ] `$5 + 10 CHF = $10 if CHF to USD is 2:1`
+- [ ] `$5 * 2 = $10`
+- [ ] Make `amount` private
+- [ ] Dollar side effects?
+- [ ] Money rounding?
 
