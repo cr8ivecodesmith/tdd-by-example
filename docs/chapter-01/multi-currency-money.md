@@ -53,5 +53,5 @@ $5 * 2 = $10
 - [ ] Make `amount` private
 - [x] Dollar side effects? - Turn Dollar into a *Value Object*
 - [ ] Money rounding?
-- [ ] `.equals()` - Checks object equality
+- [x] `.equals()` - Checks object amount equality
 - [ ] `.hash_code()`
