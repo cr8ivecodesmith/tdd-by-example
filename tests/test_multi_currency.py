@@ -1,4 +1,4 @@
-from tdd_by_example.currency import Dollar
+from tdd_by_example.currency import Dollar, Franc
 
 
 def test_multiplication() -> None:

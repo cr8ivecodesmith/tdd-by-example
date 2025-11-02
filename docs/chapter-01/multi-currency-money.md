@@ -57,5 +57,5 @@ $5 * 2 = $10
 - [ ] `.hash_code()`
 - [ ] Equal null
 - [ ] Equal object
-- [ ] `5 CHF * 2 = 10 CHF`
+- [x] `5 CHF * 2 = 10 CHF`
 

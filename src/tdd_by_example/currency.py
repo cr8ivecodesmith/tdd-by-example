@@ -16,3 +16,20 @@ class Dollar:
 
     def __eq__(self, other: "Dollar") -> bool:
         return self.equals(other)
+
+
+class Franc:
+
+    _amount: int
+
+    def __init__(self, amount: int) -> None:
+        self._amount = amount
+
+    def times(self, multiplier: int) -> "Franc":
+        return Franc(self._amount * multiplier)
+
+    def equals(self, other: "Franc") -> bool:
+        return self._amount == other._amount
+
+    def __eq__(self, other: "Franc") -> bool:
+        return self.equals(other)
