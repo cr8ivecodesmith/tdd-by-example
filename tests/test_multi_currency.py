@@ -1,5 +1,3 @@
-import pytest
-
 from tdd_by_example.currency import Dollar
 
 
