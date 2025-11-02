@@ -3,8 +3,11 @@ import pytest
 
 class Dollar:
 
+    amount: int
+
     def __init__(self, amount: int) -> None:
-        pass
+
+        self.amount = None
 
     def times(self, multiplier: int) -> None:
         pass
