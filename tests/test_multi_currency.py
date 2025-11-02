@@ -1,16 +1,6 @@
 import pytest
 
-
-class Dollar:
-
-    amount: int
-
-    def __init__(self, amount: int) -> None:
-        self.amount = amount
-
-    def times(self, multiplier: int) -> None:
-        return Dollar(self.amount * multiplier)
-
+from tdd_by_example.currency import Dollar
 
 
 def test_multiplication() -> None:
