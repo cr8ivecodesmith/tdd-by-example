@@ -16,5 +16,5 @@ def test_equality() -> None:
 def test_franc_multiplication() -> None:
     five = Franc(5)
 
-    assert five.times(2) == Dollar(10)
-    assert five.times(3) == Dollar(15)
+    assert five.times(2) == Franc(10)
+    assert five.times(3) == Franc(15)
