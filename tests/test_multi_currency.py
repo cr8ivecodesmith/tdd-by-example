@@ -15,5 +15,9 @@ class Dollar:
 
 def test_multiplication() -> None:
     five = Dollar(5)
-    five.times(2)
-    assert five.amount == 10
+
+    product = five.times(2)
+    assert product.amount == 10
+
+    product = five.times(3)
+    assert product.amount == 15
