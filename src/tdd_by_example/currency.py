@@ -12,4 +12,4 @@ class Dollar:
         return Dollar(self.amount * multiplier)
 
     def equals(self, other: "Dollar") -> bool:
-        return True
+        return self.amount == other.amount
