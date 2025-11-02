@@ -3,7 +3,10 @@ import pytest
 
 class Dollar:
 
-    def __init__(self, amount: int):
+    def __init__(self, amount: int) -> None:
+        pass
+
+    def times(self, multiplier: int) -> None:
         pass
 
 
