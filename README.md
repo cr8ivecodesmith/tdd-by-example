@@ -20,6 +20,7 @@ The code is converted to Python from the original Java examples in the book.
 
 ```shell
 git clone https://github.com/cr8ivecodesmith/tdd-by-example.git
+cd tdd-by-example
 ```
 
 2\. Init virtualenv and install requirements
