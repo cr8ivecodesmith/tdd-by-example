@@ -4,8 +4,7 @@ from __future__ import annotations
 
 class Money:
 
-    _amount: int
-    _currency: str
+    # Factory methods
 
     @staticmethod
     def dollar(amount: int) -> Money:
@@ -15,12 +14,17 @@ class Money:
     def franc(amount: int) -> Money:
         return Money(amount, "CHF")
 
-    def currency(self) -> str:
-        return self._currency
+    # End factory methods
+
+    _amount: int
+    _currency: str
 
     def __init__(self, amount: int, currency: str) -> None:
         self._amount = amount
         self._currency = currency
+
+    def currency(self) -> str:
+        return self._currency
 
     def equals(self, other: Money) -> bool:
         return (
