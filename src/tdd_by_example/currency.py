@@ -112,14 +112,14 @@ class Sum(Expression):
     A Sum is a resulf from a `plus` Expression.
 
     """
-    augend: Money
-    addend: Money
+    augend: Expression
+    addend: Expression
 
     @classmethod
     def from_expression(cls, expr: Expression) -> Sum:
         return cls(expr.augend, expr.addend)
 
-    def __init__(self, augend: Money, addend: Money):
+    def __init__(self, augend: Expression, addend: Expression):
         self.augend = augend
         self.addend = addend
 
