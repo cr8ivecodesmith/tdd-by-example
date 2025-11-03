@@ -33,6 +33,9 @@ class Money:
     def __eq__(self, other: Money) -> bool:
         return self.equals(other)
 
+    def times(self, multiplier: int) -> Money:
+        return Money(self._amount * multiplier, self._currency)
+
     def __repr__(self) -> str:  # pragma: no cover
         return f"{type(self).__name__}({self._amount} {self._currency})"
 
@@ -42,14 +45,8 @@ class Dollar(Money):
     def __init__(self, amount: int, currency: str) -> None:
         super().__init__(amount, currency)
 
-    def times(self, multiplier: int) -> Money:
-        return Money(self._amount * multiplier, self._currency)
-
 
 class Franc(Money):
 
     def __init__(self, amount: int, currency: str) -> None:
         super().__init__(amount, currency)
-
-    def times(self, multiplier: int) -> Money:
-        return Money(self._amount * multiplier, self._currency)
