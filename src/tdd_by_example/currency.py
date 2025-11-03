@@ -38,7 +38,4 @@ class Money:
         return f"{type(self).__name__}({self._amount} {self._currency})"
 
 
-class Dollar(Money): pass
-
-
 class Franc(Money): pass
