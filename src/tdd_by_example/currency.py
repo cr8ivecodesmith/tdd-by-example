@@ -46,8 +46,9 @@ class Money:
     def plus(self, addend: Money) -> Expression:
         return Sum(self, addend)
 
-    def reduce(self, to: str) -> Money:
-        return self
+    def reduce(self, bank: Bank, to: str) -> Money:
+        rate: int = bank.rate(self._currency, to)
+        return Money(self._amount // rate, to)
 
 
 class Expression(Money):
@@ -57,7 +58,7 @@ class Expression(Money):
 
     """
 
-    def reduce(self, to: str) -> Money: pass
+    def reduce(self, bank: Bank, to: str) -> Money: pass
 
 
 class Bank:
@@ -68,7 +69,14 @@ class Bank:
     """
 
     def reduce(self, source: Expression, to: str) -> Money:
-        return source.reduce(to)
+        return source.reduce(self, to)
+
+    def add_rate(self, from_currency: str, to_currency: str, rate: int) -> None:
+        pass
+
+    def rate(self, from_currency: str, to_currency: str) -> int:
+        return 2 if (from_currency == "CHF" and to_currency == "USD") else 1
+
 
 
 class Sum(Expression):
@@ -87,6 +95,6 @@ class Sum(Expression):
         self.augend = augend
         self.addend = addend
 
-    def reduce(self, to: str) -> Money:
+    def reduce(self, bank: Bank, to: str) -> Money:
         amount: int = self.augend._amount + self.addend._amount
         return Money(amount, to)
