@@ -15,6 +15,8 @@ def test_equality() -> None:
     assert Franc(5).equals(Franc(5))
     assert not Franc(5).equals(Franc(6))
 
+    assert not Franc(5).equals(Dollar(5))
+
 
 def test_franc_multiplication() -> None:
     five = Franc(5)
