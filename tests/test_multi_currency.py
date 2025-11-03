@@ -1,4 +1,4 @@
-from tdd_by_example.currency import Money
+from tdd_by_example.currency import Money, Bank
 
 
 def test_multiplication() -> None:
@@ -20,5 +20,8 @@ def test_currency() -> None:
 
 
 def test_simple_addition() -> None:
-    sum_:Money = Money.dollar(5).plus(Money.dollar(5))
-    assert Money.dollar(10) == sum_
+    five:Money = Money.dollar(5)
+    sum_:Expression = five.plus(five)
+    bank:Bank = Bank()
+    reduced:Money = bank.reduce(sum_, "USD")
+    assert Money.dollar(10) == reduced

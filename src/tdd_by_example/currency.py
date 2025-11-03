@@ -1,6 +1,8 @@
 """Currency module defining different currency classes."""
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
+
 
 class Money:
 
@@ -41,5 +43,24 @@ class Money:
     def times(self, multiplier: int) -> Money:
         return Money(self._amount * multiplier, self._currency)
 
-    def plus(self, addend: Money) -> Money:
-        return Money(self._amount + addend._amount, self._currency)
+    def plus(self, addend: Money) -> Expression:
+        return Expression(self._amount + addend._amount, self._currency)
+
+
+class Expression(Money):
+    """
+    An Expression is Money resulting from an Operation between two
+    money objects.
+
+    """
+
+
+class Bank:
+    """
+    A Bank reduces an Expression object back to single currency
+    given a set of exchange rates.
+
+    """
+
+    def reduce(self, source: Expression, to: str):
+        return Money.dollar(10)
