@@ -28,11 +28,6 @@ class Dollar(Money):
 
 class Franc(Money):
 
-    _amount: int
-
-    def __init__(self, amount: int) -> None:
-        self._amount = amount
-
     def times(self, multiplier: int) -> "Franc":
         return Franc(self._amount * multiplier)
 
