@@ -1,6 +1,7 @@
 """Currency module defining different currency classes."""
 from __future__ import annotations
 
+from abc import abstractmethod
 from typing import Protocol, runtime_checkable
 
 
@@ -39,15 +40,14 @@ class Expression(Protocol):
 
     """
 
-    def reduce(self, bank: Bank, to: str) -> Money:
-        return bank.reduce(self, to)  # pragma: no cover, boilerplate
+    @abstractmethod
+    def reduce(self, bank: Bank, to: str) -> Money: pass
 
-    def plus(self, addend: Expression) -> Expression:
-        return self.plus(addend)  # pragma: no cover, boilerplate
+    @abstractmethod
+    def plus(self, addend: Expression) -> Expression: pass
 
-    def times(self, multiplier: int) -> Expression:
-        return self.times(multiplier)  # pragma: no cover, boilerplate
-
+    @abstractmethod
+    def times(self, multiplier: int) -> Expression: pass
 
 
 class Money:
