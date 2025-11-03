@@ -36,6 +36,3 @@ class Money:
 
     def __repr__(self) -> str:  # pragma: no cover
         return f"{type(self).__name__}({self._amount} {self._currency})"
-
-
-class Franc(Money): pass

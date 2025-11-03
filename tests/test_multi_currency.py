@@ -1,4 +1,4 @@
-from tdd_by_example.currency import Money, Franc
+from tdd_by_example.currency import Money
 
 
 def test_multiplication() -> None:
@@ -11,10 +11,6 @@ def test_multiplication() -> None:
 def test_equality() -> None:
     assert Money.dollar(5).equals(Money.dollar(5))
     assert not Money.dollar(5).equals(Money.dollar(6))
-
-    assert Money.franc(5).equals(Money.franc(5))
-    assert not Money.franc(5).equals(Money.franc(6))
-
     assert not Money.franc(5).equals(Money.dollar(5))
 
 
@@ -28,7 +24,3 @@ def test_franc_multiplication() -> None:
 def test_currency() -> None:
     assert "USD" == Money.dollar(1).currency()
     assert "CHF" == Money.franc(1).currency()
-
-
-def test_different_class_equality() -> None:
-    assert Money(10, "CHF").equals(Franc(10, "CHF"))
