@@ -40,17 +40,11 @@ class Money:
 
 class Dollar(Money):
 
-    def __init__(self, amount: int, currency: str) -> None:
-        super().__init__(amount, currency)
-
     def dollar(self, amount: int) -> Money:
         return Money(amount, "USD")
 
 
 class Franc(Money):
-
-    def __init__(self, amount: int, currency: str) -> None:
-        super().__init__(amount, currency)
 
     def franc(self, amount: int) -> Money:
         return Money(amount, "CHF")
