@@ -33,3 +33,10 @@ def test_plus_returns_sum() -> None:
     sum_:Sum = Sum.from_expression(result)
     assert five == sum_.augend
     assert five == sum_.addend
+
+
+def test_reduce_sum() -> None:
+    sum_:Expression = Sum(Money.dollar(3), Money.dollar(4))
+    bank:Bank = Bank()
+    result:Money = bank.reduce(sum_, "USD")
+    assert Money.dollar(7) == result
