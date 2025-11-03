@@ -62,4 +62,5 @@ $5 * 2 = $10
 - [x] Common equals
 - [ ] Common times
 - [x] Compare Francs with Dollars
-
+- [ ] Currency?
+- [ ] Delete `test_franc_multiplication`?
