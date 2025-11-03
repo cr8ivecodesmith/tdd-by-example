@@ -55,5 +55,5 @@ def test_reduce_money_different_currency() -> None:
     assert Money.dollar(1) == result
 
 
-def test_indentity_rate() -> None:
+def test_identity_rate() -> None:
     assert 1 == Bank().rate("USD", "USD")
