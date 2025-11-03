@@ -1,4 +1,4 @@
-from tdd_by_example.currency import Bank, Expression, Money, Sum
+from tdd_by_example.currency import Bank, Money, Sum
 
 
 def test_multiplication() -> None:
@@ -20,38 +20,38 @@ def test_currency() -> None:
 
 
 def test_simple_addition() -> None:
-    five: Money = Money.dollar(5)
-    sum_: Expression = five.plus(five)
-    bank: Bank = Bank()
-    reduced: Money = bank.reduce(sum_, "USD")
+    five = Money.dollar(5)
+    sum_ = five.plus(five)
+    bank = Bank()
+    reduced = bank.reduce(sum_, "USD")
     assert Money.dollar(10) == reduced
 
 
 def test_plus_returns_sum() -> None:
-    five: Money = Money.dollar(5)
-    result: Expression = five.plus(five)
-    sum_: Sum = Sum.from_expression(result)
+    five = Money.dollar(5)
+    result = five.plus(five)
+    sum_ = Sum.from_expression(result)
     assert five == sum_.augend
     assert five == sum_.addend
 
 
 def test_reduce_sum() -> None:
-    sum_: Expression = Sum(Money.dollar(3), Money.dollar(4))
-    bank: Bank = Bank()
-    result: Money = bank.reduce(sum_, "USD")
+    sum_ = Sum(Money.dollar(3), Money.dollar(4))
+    bank = Bank()
+    result = bank.reduce(sum_, "USD")
     assert Money.dollar(7) == result
 
 
 def test_reduce_money() -> None:
-    bank: Bank = Bank()
-    result: Money = bank.reduce(Money.dollar(1), "USD")
+    bank = Bank()
+    result = bank.reduce(Money.dollar(1), "USD")
     assert Money.dollar(1) == result
 
 
 def test_reduce_money_different_currency() -> None:
-    bank: Bank = Bank()
+    bank = Bank()
     bank.add_rate("CHF", "USD", 2)
-    result: Money = bank.reduce(Money.franc(2), "USD")
+    result = bank.reduce(Money.franc(2), "USD")
     assert Money.dollar(1) == result
 
 
@@ -60,11 +60,11 @@ def test_identity_rate() -> None:
 
 
 def test_mixed_addition() -> None:
-    five_bucks: Expression = Money.dollar(5)
-    ten_francs: Expression = Money.franc(10)
-    bank: Bank = Bank()
+    five_bucks = Money.dollar(5)
+    ten_francs = Money.franc(10)
+    bank = Bank()
     bank.add_rate("CHF", "USD", 2)
-    result: Money = bank.reduce(
+    result = bank.reduce(
         five_bucks.plus(ten_francs),
         "USD"
     )
@@ -72,20 +72,20 @@ def test_mixed_addition() -> None:
 
 
 def test_sum_plus_money() -> None:
-    five_bucks: Expression = Money.dollar(5)
-    ten_francs: Expression = Money.franc(10)
-    bank: Bank = Bank()
+    five_bucks = Money.dollar(5)
+    ten_francs = Money.franc(10)
+    bank = Bank()
     bank.add_rate("CHF", "USD", 2)
-    sum_: Expression = Sum(five_bucks, ten_francs).plus(five_bucks)
-    result: Money = bank.reduce(sum_, "USD")
+    sum_ = Sum(five_bucks, ten_francs).plus(five_bucks)
+    result = bank.reduce(sum_, "USD")
     assert Money.dollar(15) == result
 
 
 def test_sum_times() -> None:
-    five_bucks: Expression = Money.dollar(5)
-    ten_francs: Expression = Money.franc(10)
-    bank: Bank = Bank()
+    five_bucks = Money.dollar(5)
+    ten_francs = Money.franc(10)
+    bank = Bank()
     bank.add_rate("CHF", "USD", 2)
-    sum_: Expression = Sum(five_bucks, ten_francs).times(2)
-    result: Money = bank.reduce(sum_, "USD")
+    sum_ = Sum(five_bucks, ten_francs).times(2)
+    result = bank.reduce(sum_, "USD")
     assert Money.dollar(20) == result
