@@ -41,7 +41,4 @@ class Money:
 class Dollar(Money): pass
 
 
-class Franc(Money):
-
-    def franc(self, amount: int) -> Money:
-        return Money(amount, "CHF")
+class Franc(Money): pass
