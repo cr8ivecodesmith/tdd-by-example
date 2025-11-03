@@ -44,7 +44,7 @@ class Money:
         return Money(self._amount * multiplier, self._currency)
 
     def plus(self, addend: Money) -> Expression:
-        return Expression(self._amount + addend._amount, self._currency)
+        return Sum(self, addend)
 
 
 class Expression(Money):
@@ -64,3 +64,20 @@ class Bank:
 
     def reduce(self, source: Expression, to: str):
         return Money.dollar(10)
+
+
+class Sum(Expression):
+    """
+    A Sum is a resulf from a `plus` Expression.
+
+    """
+    augend: Money
+    addend: Money
+
+    @classmethod
+    def from_expression(cls, expr: Expression):
+        return cls(expr.augend, expr.addend)
+
+    def __init__(self, augend: Money, addend: Money):
+        self.augend = augend
+        self.addend = addend

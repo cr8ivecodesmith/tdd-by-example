@@ -1,4 +1,4 @@
-from tdd_by_example.currency import Money, Bank
+from tdd_by_example.currency import Money, Bank, Sum
 
 
 def test_multiplication() -> None:
@@ -30,6 +30,6 @@ def test_simple_addition() -> None:
 def test_plus_returns_sum() -> None:
     five: Money = Money.dollar(5)
     result:Expression = five.plus(five)
-    sum_:Sum = Sum(result)
+    sum_:Sum = Sum.from_expression(result)
     assert five == sum_.augend
     assert five == sum_.addend
