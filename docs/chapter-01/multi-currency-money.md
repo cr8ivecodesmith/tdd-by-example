@@ -48,7 +48,6 @@ $5 * 2 = $10
 
 ## To-Do - 01 - Status: Archived
 
-- [ ] `$5 + 10 CHF = $10 if CHF to USD is 2:1`
 - [x] `$5 * 2 = $10`
 - [x] Make `amount` private
 - [x] Dollar side effects? - Turn Dollar into a *Value Object*
@@ -70,7 +69,4 @@ $5 * 2 = $10
 
 - [ ] `$5 + 10 CHF = $10 if CHF to USD is 2:1`
 - [ ] `$5 + $5 = $10`
-- [ ] Money rounding?
-- [ ] `.hash_code()`
-- [ ] Equal null
-- [ ] Equal object
+- [ ] Return Money from `$5 + $5`

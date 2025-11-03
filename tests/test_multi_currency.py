@@ -25,3 +25,11 @@ def test_simple_addition() -> None:
     bank:Bank = Bank()
     reduced:Money = bank.reduce(sum_, "USD")
     assert Money.dollar(10) == reduced
+
+
+def test_plus_returns_sum() -> None:
+    five: Money = Money.dollar(5)
+    result:Expression = five.plus(five)
+    sum_:Sum = Sum(result)
+    assert five == sum_.augend
+    assert five == sum_.addend
