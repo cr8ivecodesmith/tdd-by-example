@@ -59,6 +59,6 @@ $5 * 2 = $10
 - [ ] Equal object
 - [x] `5 CHF * 2 = 10 CHF`
 - [ ] Dollar/Franc duplication
-- [ ] Common equals
+- [x] Common equals
 - [ ] Common times
 
