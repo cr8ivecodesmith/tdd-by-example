@@ -7,6 +7,7 @@ from abc import ABC, abstractmethod
 class Money(ABC):
 
     _amount: int
+    _currency: str
 
     @staticmethod
     def dollar(amount: int) -> Money:
@@ -16,11 +17,12 @@ class Money(ABC):
     def franc(amount: int) -> Money:
         return Franc(amount, "CHF")
 
-    @abstractmethod
-    def currency(self) -> str: pass
+    def currency(self) -> str:
+        return self._currency
 
-    def __init__(self, amount: int) -> None:
+    def __init__(self, amount: int, currency: str) -> None:
         self._amount = amount
+        self._currency = currency
 
     def equals(self, other: Money) -> bool:
         return (
@@ -37,29 +39,17 @@ class Money(ABC):
 
 class Dollar(Money):
 
-    __currency: str
-
     def __init__(self, amount: int, currency: str) -> None:
-        super().__init__(amount)
-        self.__currency = currency
+        super().__init__(amount, currency)
 
     def times(self, multiplier: int) -> Money:
         return Money.dollar(self._amount * multiplier)
 
-    def currency(self):
-        return self.__currency
-
 
 class Franc(Money):
 
-    __currency: str
-
     def __init__(self, amount: int, currency: str) -> None:
-        super().__init__(amount)
-        self.__currency = currency
+        super().__init__(amount, currency)
 
     def times(self, multiplier: int) -> Money:
         return Money.franc(self._amount * multiplier)
-
-    def currency(self):
-        return self.__currency
