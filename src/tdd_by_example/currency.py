@@ -13,11 +13,16 @@ class Money:
         self._amount = amount
 
     def equals(self, other: "Money") -> bool:
-        other = Money(other.amount)
-        return self.amount == other.amount
+        return (
+            self.amount == other.amount
+            and isinstance(other, type(self))
+        )
 
     def __eq__(self, other: "Money") -> bool:
         return self.equals(other)
+
+    def __repr__(self) -> str:  # pragma: no cover
+        return f"{type(self).__name__}({self.amount})"
 
 
 class Dollar(Money):
