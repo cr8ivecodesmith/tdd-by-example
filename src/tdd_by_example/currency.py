@@ -85,6 +85,8 @@ class Expression(Money):
 
     def reduce(self, bank: Bank, to: str) -> Money: pass
 
+    def plus(self, addend: Expression) -> Expression: pass
+
 
 class Bank:
     """
@@ -129,3 +131,5 @@ class Sum(Expression):
             + self.addend.reduce(bank, to)._amount
         )
         return Money(amount, to)
+
+    def plus(self, addend: Expression) -> Expression: pass

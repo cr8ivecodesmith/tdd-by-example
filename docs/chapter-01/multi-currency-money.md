@@ -73,3 +73,5 @@ $5 * 2 = $10
 - [x] `Bank.reduce(Money)`
 - [x] Reduce Money with conversion
 - [x] `Reduce(Bank, String)`
+- [ ] Sum plus
+- [ ] Expression times

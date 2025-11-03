@@ -1,4 +1,4 @@
-from tdd_by_example.currency import Money, Bank, Sum
+from tdd_by_example.currency import Money, Bank, Sum, Expression
 
 
 def test_multiplication() -> None:
