@@ -57,6 +57,8 @@ class Expression(Money):
 
     """
 
+    def reduce(self, to: str) -> Money: pass
+
 
 class Bank:
     """
@@ -65,11 +67,8 @@ class Bank:
 
     """
 
-    def reduce(self, source: Expression, to: str):
-        if isinstance(source, Money):
-            return source.reduce(to)
-        sum_: Sum = Sum.from_expression(source)
-        return sum_.reduce(to)
+    def reduce(self, source: Expression, to: str) -> Money:
+        return source.reduce(to)
 
 
 class Sum(Expression):
@@ -81,7 +80,7 @@ class Sum(Expression):
     addend: Money
 
     @classmethod
-    def from_expression(cls, expr: Expression):
+    def from_expression(cls, expr: Expression) -> Sum:
         return cls(expr.augend, expr.addend)
 
     def __init__(self, augend: Money, addend: Money):
