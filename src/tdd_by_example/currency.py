@@ -31,8 +31,9 @@ class Franc(Money):
     def times(self, multiplier: int) -> "Franc":
         return Franc(self._amount * multiplier)
 
-    def equals(self, other: "Franc") -> bool:
-        return self._amount == other._amount
+    def equals(self, other: "Money") -> bool:
+        other = Money(other.amount)
+        return self.amount == other.amount
 
-    def __eq__(self, other: "Franc") -> bool:
+    def __eq__(self, other: "Money") -> bool:
         return self.equals(other)
