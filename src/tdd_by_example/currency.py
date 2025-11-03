@@ -38,10 +38,7 @@ class Money:
         return f"{type(self).__name__}({self._amount} {self._currency})"
 
 
-class Dollar(Money):
-
-    def dollar(self, amount: int) -> Money:
-        return Money(amount, "USD")
+class Dollar(Money): pass
 
 
 class Franc(Money):
