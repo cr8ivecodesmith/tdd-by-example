@@ -7,10 +7,7 @@ from abc import ABC, abstractmethod
 class Money(ABC):
 
     _amount: int
-
-    @property
-    def amount(self) -> int:
-        return self._amount
+    _currency: str
 
     @staticmethod
     def dollar(amount: int) -> Dollar:
@@ -28,7 +25,7 @@ class Money(ABC):
 
     def equals(self, other: Money) -> bool:
         return (
-            self.amount == other.amount
+            self._amount == other._amount
             and isinstance(other, type(self))
         )
 
@@ -36,10 +33,16 @@ class Money(ABC):
         return self.equals(other)
 
     def __repr__(self) -> str:  # pragma: no cover
-        return f"{type(self).__name__}({self.amount})"
+        return f"{type(self).__name__}({self._amount})"
 
 
 class Dollar(Money):
+
+    __currency: str
+
+    def __init__(self, amount: int) -> None:
+        super().__init__(amount)
+        self.__currency = "USD"
 
     def times(self, multiplier: int) -> Money:
         return Dollar(self._amount * multiplier)
@@ -49,6 +52,12 @@ class Dollar(Money):
 
 
 class Franc(Money):
+
+    __currency: str
+
+    def __init__(self, amount: int) -> None:
+        super().__init__(amount)
+        self.__currency = "CHF"
 
     def times(self, multiplier: int) -> Money:
         return Franc(self._amount * multiplier)
