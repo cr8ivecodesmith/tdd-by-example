@@ -61,4 +61,5 @@ $5 * 2 = $10
 - [ ] Dollar/Franc duplication
 - [x] Common equals
 - [ ] Common times
+- [ ] Compare Francs with Dollars
 
