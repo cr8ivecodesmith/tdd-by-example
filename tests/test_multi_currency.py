@@ -2,7 +2,7 @@ from tdd_by_example.currency import Dollar, Franc, Money
 
 
 def test_multiplication() -> None:
-    five = Money.dollar(5)
+    five:Money = Money.dollar(5)
 
     assert five.times(2) == Dollar(10)
     assert five.times(3) == Dollar(15)
@@ -19,7 +19,7 @@ def test_equality() -> None:
 
 
 def test_franc_multiplication() -> None:
-    five = Franc(5)
+    five:Franc = Franc(5)
 
     assert five.times(2) == Franc(10)
     assert five.times(3) == Franc(15)
