@@ -1,6 +1,18 @@
 """Currency module defining different currency classes."""
 
 
+class Money:
+
+    _amount: int
+
+    @property
+    def amount(self) -> int:
+        return self._amount
+
+    def __init__(self, amount: int) -> None:
+        self._amount = amount
+
+
 class Dollar:
 
     _amount: int
