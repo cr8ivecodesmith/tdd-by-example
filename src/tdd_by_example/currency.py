@@ -26,7 +26,7 @@ class Dollar(Money):
         return Dollar(self._amount * multiplier)
 
 
-class Franc:
+class Franc(Money):
 
     _amount: int
 
