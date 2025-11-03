@@ -83,9 +83,15 @@ class Expression(Money):
 
     """
 
+    # NOTE: These methods are not really needed in Python
+    # and its safe to delete.
+    # but keeping it here to match the book's guide
+
     def reduce(self, bank: Bank, to: str) -> Money: pass
 
     def plus(self, addend: Expression) -> Expression: pass
+
+    def times(self, multiplier: int) -> Expression: pass
 
 
 class Bank:
@@ -134,3 +140,9 @@ class Sum(Expression):
 
     def plus(self, addend: Expression) -> Expression:
         return Sum(self, addend)
+
+    def times(self, multiplier: int) -> Expression:
+        return Sum(
+            self.augend.times(multiplier),
+            self.addend.times(multiplier)
+        )
