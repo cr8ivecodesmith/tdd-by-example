@@ -4,7 +4,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 
-class Money(ABC):
+class Money:
 
     _amount: int
     _currency: str
@@ -27,14 +27,14 @@ class Money(ABC):
     def equals(self, other: Money) -> bool:
         return (
             self._amount == other._amount
-            and isinstance(other, type(self))
+            and type(self) == type(other)
         )
 
     def __eq__(self, other: Money) -> bool:
         return self.equals(other)
 
     def __repr__(self) -> str:  # pragma: no cover
-        return f"{type(self).__name__}({self._amount})"
+        return f"{type(self).__name__}({self._amount} {self._currency})"
 
 
 class Dollar(Money):
