@@ -46,7 +46,7 @@ $5 * 2 = $10
 - We need to be able to multiply an amount (price per share) by a number (number of shares) and receive an amount.
 
 
-## To-Do
+## To-Do - 01 - Status: Archived
 
 - [ ] `$5 + 10 CHF = $10 if CHF to USD is 2:1`
 - [x] `$5 * 2 = $10`
@@ -64,3 +64,13 @@ $5 * 2 = $10
 - [x] Compare Francs with Dollars
 - [x] Currency?
 - [x] Delete `test_franc_multiplication`?
+
+
+## To-Do - 02 - Status: Active
+
+- [ ] `$5 + 10 CHF = $10 if CHF to USD is 2:1`
+- [ ] `$5 + $5 = $10`
+- [ ] Money rounding?
+- [ ] `.hash_code()`
+- [ ] Equal null
+- [ ] Equal object
