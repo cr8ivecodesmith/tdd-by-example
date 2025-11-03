@@ -4,6 +4,31 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 
+class Pair:
+    """Currency pair used for rate lookup"""
+
+    from_currency: str
+    to_currency: str
+
+    def __repr__(self):  # pragma: no cover
+        return (
+            f"{type(self).__name__}({self.from_currency}, {self.to_currency})"
+        )
+
+    def __init__(self, from_currency: str, to_currency: str):
+        self.from_currency = from_currency
+        self.to_currency = to_currency
+
+    def __eq__(self, other):
+        return (
+            self.from_currency == other.from_currency
+            and self.to_currency == other.to_currency
+        )
+
+    def __hash__(self):
+        return hash((self.from_currency, self.to_currency))
+
+
 class Money:
 
     # Factory methods
@@ -68,15 +93,18 @@ class Bank:
 
     """
 
+    rates: dict = {}
+
     def reduce(self, source: Expression, to: str) -> Money:
         return source.reduce(self, to)
 
     def add_rate(self, from_currency: str, to_currency: str, rate: int) -> None:
-        pass
+        self.rates[Pair(from_currency, to_currency)] = rate
 
     def rate(self, from_currency: str, to_currency: str) -> int:
-        return 2 if (from_currency == "CHF" and to_currency == "USD") else 1
-
+        if from_currency == to_currency: return 1
+        pair = Pair(from_currency, to_currency)
+        return self.rates.get(pair)
 
 
 class Sum(Expression):

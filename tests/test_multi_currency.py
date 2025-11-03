@@ -53,3 +53,7 @@ def test_reduce_money_different_currency() -> None:
     bank.add_rate("CHF", "USD", 2)
     result: Money = bank.reduce(Money.franc(2), "USD")
     assert Money.dollar(1) == result
+
+
+def test_indentity_rate() -> None:
+    assert 1 == Bank().rate("USD", "USD")

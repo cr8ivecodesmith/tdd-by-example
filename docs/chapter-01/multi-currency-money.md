@@ -68,8 +68,8 @@ $5 * 2 = $10
 ## To-Do - 02 - Status: Active
 
 - [ ] `$5 + 10 CHF = $10 if CHF to USD is 2:1`
-- [ ] `$5 + $5 = $10`
+- [x] `$5 + $5 = $10`
 - [ ] Return Money from `$5 + $5`
 - [x] `Bank.reduce(Money)`
-- [ ] Reduce Money with conversion
-- [ ] `Reduce(Bank, String)`
+- [x] Reduce Money with conversion
+- [x] `Reduce(Bank, String)`
