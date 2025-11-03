@@ -27,7 +27,7 @@ class Money:
     def equals(self, other: Money) -> bool:
         return (
             self._amount == other._amount
-            and type(self) == type(other)
+            and self.currency() == other.currency()
         )
 
     def __eq__(self, other: Money) -> bool:
