@@ -69,3 +69,14 @@ def test_mixed_addition() -> None:
         "USD"
     )
     assert Money.dollar(10) == result
+
+
+def test_sum_plus_money() -> None:
+    five_bucks: Expression = Money.dollar(5)
+    ten_francs: Expression = Money.franc(10)
+    bank: Bank = Bank()
+    bank.add_rate("CHF", "USD", 2)
+    sum_: Expression = Sum(five_bucks, ten_francs).plus(five_bucks)
+
+    result: Money = bank.reduce(sum_, "USD")
+    assert Money.dollar(15) == result
