@@ -19,6 +19,9 @@ class Money:
     _amount: int
     _currency: str
 
+    def __repr__(self) -> str:  # pragma: no cover
+        return f"{type(self).__name__}({self._amount} {self._currency})"
+
     def __init__(self, amount: int, currency: str) -> None:
         self._amount = amount
         self._currency = currency
@@ -38,5 +41,5 @@ class Money:
     def times(self, multiplier: int) -> Money:
         return Money(self._amount * multiplier, self._currency)
 
-    def __repr__(self) -> str:  # pragma: no cover
-        return f"{type(self).__name__}({self._amount} {self._currency})"
+    def plus(self, addend: Money) -> Money:
+        return Money(self._amount + addend._amount, self._currency)
