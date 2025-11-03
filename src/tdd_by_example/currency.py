@@ -16,6 +16,9 @@ class Money:
         other = Money(other.amount)
         return self.amount == other.amount
 
+    def __eq__(self, other: "Money") -> bool:
+        return self.equals(other)
+
 
 class Dollar(Money):
 
@@ -26,9 +29,6 @@ class Dollar(Money):
 
     def times(self, multiplier: int) -> "Dollar":
         return Dollar(self._amount * multiplier)
-
-    def __eq__(self, other: "Money") -> bool:
-        return self.equals(other)
 
 
 class Franc:
