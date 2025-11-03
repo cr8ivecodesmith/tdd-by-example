@@ -14,6 +14,10 @@ class Money(ABC):
     def dollar(amount: int) -> "Dollar":
         return Dollar(amount)
 
+    @staticmethod
+    def franc(amount: int) -> "Franc":
+        return Franc(amount)
+
     def __init__(self, amount: int) -> None:
         self._amount = amount
 
