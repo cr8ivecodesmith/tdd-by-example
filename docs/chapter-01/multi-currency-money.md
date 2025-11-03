@@ -65,7 +65,7 @@ $5 * 2 = $10
 - [x] Delete `test_franc_multiplication`?
 
 
-## To-Do - 02 - Status: Active
+## To-Do - 02 - Status: Archived
 
 - [x] `$5 + 10 CHF = $10 if CHF to USD is 2:1`
 - [x] `$5 + $5 = $10`
@@ -75,3 +75,8 @@ $5 * 2 = $10
 - [x] `Reduce(Bank, String)`
 - [x] Sum plus
 - [x] Expression times
+
+
+## To-Do - 03 - Status: Draft
+
+- [ ] next items...

@@ -1,8 +1,6 @@
 """Currency module defining different currency classes."""
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-
 
 class Pair:
     """Currency pair used for rate lookup"""
@@ -110,7 +108,8 @@ class Bank:
         self.rates[Pair(from_currency, to_currency)] = rate
 
     def rate(self, from_currency: str, to_currency: str) -> int:
-        if from_currency == to_currency: return 1
+        if from_currency == to_currency:
+            return 1
         pair = Pair(from_currency, to_currency)
         return self.rates.get(pair)
 

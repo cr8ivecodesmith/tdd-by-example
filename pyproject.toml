@@ -60,7 +60,7 @@ docstring-code-format = true
 docstring-code-line-length = "dynamic"
 
 [tool.ruff.lint]
-select = ["E", "F", "N", "W", "C90"]
+select = ["E", "F", "N", "W", "C90", "I", "UP", "TCH"]
 ignore = []
 
 [tool.ruff.lint.isort]
