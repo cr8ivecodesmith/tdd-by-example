@@ -26,6 +26,7 @@ test = [
     "pytest-cov",
     "pytest-pretty",
     "ruff",
+    "pyright",
 ]
 
 [tool.setuptools.packages.find]
@@ -101,6 +102,11 @@ exempt-modules = [
     "typing",
     "typing_extensions",
 ]
+
+[tool.pyright]
+typeCheckingMode = "strict"
+reportMissingImports = true
+reportUnusedImport = true
 
 [tool.pytest.ini_options]
 addopts = "-q -n auto --cov=tdd_by_example --cov-report=term-missing --cov-report=xml --maxfail=1"

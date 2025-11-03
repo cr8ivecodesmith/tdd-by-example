@@ -39,3 +39,10 @@ lint mode="check":
     else
         uv run ruff check src tests
     fi
+
+
+[doc(
+"Run type checker using pyright."
+)]
+type-check:
+    uv run pyright --threads --stats
