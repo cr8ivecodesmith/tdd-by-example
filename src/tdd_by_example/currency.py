@@ -1,6 +1,8 @@
 """Currency module defining different currency classes."""
 from __future__ import annotations
 
+from typing import Protocol, runtime_checkable
+
 
 class Pair:
     """Currency pair used for rate lookup"""
@@ -17,7 +19,9 @@ class Pair:
         self.from_currency = from_currency
         self.to_currency = to_currency
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Pair):  # pragma: no cover
+            return NotImplemented
         return (
             self.from_currency == other.from_currency
             and self.to_currency == other.to_currency
@@ -25,6 +29,25 @@ class Pair:
 
     def __hash__(self):
         return hash((self.from_currency, self.to_currency))
+
+
+@runtime_checkable
+class Expression(Protocol):
+    """
+    An Expression is Money resulting from an Operation between two
+    money objects.
+
+    """
+
+    def reduce(self, bank: Bank, to: str) -> Money:
+        return bank.reduce(self, to)  # pragma: no cover, boilerplate
+
+    def plus(self, addend: Expression) -> Expression:
+        return self.plus(addend)  # pragma: no cover, boilerplate
+
+    def times(self, multiplier: int) -> Expression:
+        return self.times(multiplier)  # pragma: no cover, boilerplate
+
 
 
 class Money:
@@ -51,6 +74,10 @@ class Money:
         self._amount = amount
         self._currency = currency
 
+    @property
+    def amount(self):
+        return self._amount
+
     def currency(self) -> str:
         return self._currency
 
@@ -60,7 +87,9 @@ class Money:
             and self.currency() == other.currency()
         )
 
-    def __eq__(self, other: Money) -> bool:
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Money):  # pragma: no cover
+            return NotImplemented
         return self.equals(other)
 
     def times(self, multiplier: int) -> Expression:
@@ -74,24 +103,6 @@ class Money:
         return Money(self._amount // rate, to)
 
 
-class Expression(Money):
-    """
-    An Expression is Money resulting from an Operation between two
-    money objects.
-
-    """
-
-    # NOTE: These methods are not really needed in Python
-    # and its safe to delete.
-    # but keeping it here to match the book's guide
-
-    def reduce(self, bank: Bank, to: str) -> Money: pass
-
-    def plus(self, addend: Expression) -> Expression: pass
-
-    def times(self, multiplier: int) -> Expression: pass
-
-
 class Bank:
     """
     A Bank reduces an Expression object back to single currency
@@ -99,7 +110,8 @@ class Bank:
 
     """
 
-    rates: dict = {}
+    def __init__(self) -> None:
+        self.rates: dict[Pair, int] = {}
 
     def reduce(self, source: Expression, to: str) -> Money:
         return source.reduce(self, to)
@@ -110,20 +122,19 @@ class Bank:
     def rate(self, from_currency: str, to_currency: str) -> int:
         if from_currency == to_currency:
             return 1
-        pair = Pair(from_currency, to_currency)
-        return self.rates.get(pair)
+        return self.rates.get(Pair(from_currency, to_currency), 1)
 
 
-class Sum(Expression):
+class Sum:
     """
     A Sum is a resulf from a `plus` Expression.
 
     """
-    augend: Expression
-    addend: Expression
 
     @classmethod
     def from_expression(cls, expr: Expression) -> Sum:
+        if not isinstance(expr, Sum):  # pragma: no cover
+            raise TypeError(f"Expecting Sum, got {type(expr).__name__}.")
         return cls(expr.augend, expr.addend)
 
     def __init__(self, augend: Expression, addend: Expression):
@@ -132,8 +143,8 @@ class Sum(Expression):
 
     def reduce(self, bank: Bank, to: str) -> Money:
         amount: int = (
-            self.augend.reduce(bank, to)._amount
-            + self.addend.reduce(bank, to)._amount
+            self.augend.reduce(bank, to).amount
+            + self.addend.reduce(bank, to).amount
         )
         return Money(amount, to)
 
