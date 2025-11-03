@@ -1,7 +1,8 @@
 """Currency module defining different currency classes."""
+from abc import ABC
 
 
-class Money:
+class Money(ABC):
 
     _amount: int
 
