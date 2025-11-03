@@ -132,4 +132,5 @@ class Sum(Expression):
         )
         return Money(amount, to)
 
-    def plus(self, addend: Expression) -> Expression: pass
+    def plus(self, addend: Expression) -> Expression:
+        return Sum(self, addend)
