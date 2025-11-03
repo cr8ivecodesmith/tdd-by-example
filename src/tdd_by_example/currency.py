@@ -9,11 +9,11 @@ class Money:
 
     @staticmethod
     def dollar(amount: int) -> Money:
-        return Dollar(amount, "USD")
+        return Money(amount, "USD")
 
     @staticmethod
     def franc(amount: int) -> Money:
-        return Franc(amount, "CHF")
+        return Money(amount, "CHF")
 
     def currency(self) -> str:
         return self._currency
