@@ -65,10 +65,10 @@ class Money:
     def __eq__(self, other: Money) -> bool:
         return self.equals(other)
 
-    def times(self, multiplier: int) -> Money:
+    def times(self, multiplier: int) -> Expression:
         return Money(self._amount * multiplier, self._currency)
 
-    def plus(self, addend: Money) -> Expression:
+    def plus(self, addend: Expression) -> Expression:
         return Sum(self, addend)
 
     def reduce(self, bank: Bank, to: str) -> Money:
