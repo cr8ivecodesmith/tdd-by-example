@@ -13,7 +13,7 @@ class Money:
         self._amount = amount
 
 
-class Dollar:
+class Dollar(Money):
 
     _amount: int
 
