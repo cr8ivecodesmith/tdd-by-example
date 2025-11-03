@@ -1,7 +1,7 @@
 """Currency module defining different currency classes."""
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
 class Money(ABC):
@@ -19,6 +19,9 @@ class Money(ABC):
     @staticmethod
     def franc(amount: int) -> Franc:
         return Franc(amount)
+
+    @abstractmethod
+    def currency(self): pass
 
     def __init__(self, amount: int) -> None:
         self._amount = amount
@@ -41,8 +44,14 @@ class Dollar(Money):
     def times(self, multiplier: int) -> Money:
         return Dollar(self._amount * multiplier)
 
+    def currency(self):
+        return "USD"
+
 
 class Franc(Money):
 
     def times(self, multiplier: int) -> Money:
         return Franc(self._amount * multiplier)
+
+    def currency(self):
+        return "CHF"
