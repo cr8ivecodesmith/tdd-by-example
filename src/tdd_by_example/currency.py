@@ -7,18 +7,17 @@ from abc import ABC, abstractmethod
 class Money(ABC):
 
     _amount: int
-    _currency: str
 
     @staticmethod
     def dollar(amount: int) -> Dollar:
         return Dollar(amount)
 
     @staticmethod
-    def franc(amount: int) -> Franc:
-        return Franc(amount)
+    def franc(amount: int) -> Money:
+        return Franc(amount, "CHF")
 
     @abstractmethod
-    def currency(self): pass
+    def currency(self) -> str: pass
 
     def __init__(self, amount: int) -> None:
         self._amount = amount
@@ -55,12 +54,12 @@ class Franc(Money):
 
     __currency: str
 
-    def __init__(self, amount: int) -> None:
+    def __init__(self, amount: int, currency: str) -> None:
         super().__init__(amount)
-        self.__currency = "CHF"
+        self.__currency = currency
 
     def times(self, multiplier: int) -> Money:
-        return Franc(self._amount * multiplier)
+        return Money.franc(self._amount * multiplier)
 
     def currency(self):
-        return "CHF"
+        return self.__currency
