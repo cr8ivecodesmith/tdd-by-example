@@ -38,6 +38,16 @@ class Expression(Protocol):
     An Expression is Money resulting from an Operation between two
     money objects.
 
+    A note about the Protocol: this is used to define an interface
+    that can be implemented by multiple classes without requiring
+    them to inherit from a common base class. This is particularly
+    useful in this context where both Money and Sum need to implement
+    the same methods but do not share a common ancestor other than
+    object.
+
+    Technically, the tests will pass without the Protocol, but using
+    it makes the intent clearer and allows for better type checking.
+
     """
 
     @abstractmethod
